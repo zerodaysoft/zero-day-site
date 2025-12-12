@@ -1,8 +1,12 @@
+import Image from "next/image";
 import Link from "next/link";
 import { MailIcon, MapPinnedIcon } from "lucide-react";
 
+import productCover from "~/assets/product-cover.png";
 import { ZeroDayLogo } from "~/components/icons/zero-day";
 import { ModeSwitcher } from "~/components/mode-switcher";
+import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
+import { GlowEffect } from "~/components/ui/glow-effect";
 import { config } from "~/lib/config";
 
 export default function HomePage() {
@@ -23,6 +27,35 @@ export default function HomePage() {
               We <span className="text-lime-500 dark:text-lime-600">fix</span> the unknown.
             </p>
             <p className="max-w-prose">We start where others stop.</p>
+          </div>
+
+          <div className="relative">
+            <GlowEffect
+              colors={["#FF5733", "#33FF57", "#3357FF", "#F1C40F"]}
+              mode="colorShift"
+              blur="medium"
+            />
+            <Card className="relative w-auto min-w-xs gap-0 overflow-clip pb-0" asChild>
+              <article>
+                <CardHeader className="border-b [.border-b]:pb-3">
+                  <CardTitle className="font-mono">Our Product</CardTitle>
+                </CardHeader>
+                <CardContent className="relative aspect-square size-full p-0">
+                  <Image
+                    alt="AI-powered business intelligence for 1C ERP users. Ask questions in natural language, get instant answers from your accounting data."
+                    className="aspect-square"
+                    src={productCover}
+                    placeholder="blur"
+                    priority
+                    fill
+                  />
+                  <span className="sr-only">
+                    AI-powered business intelligence for 1C ERP users. Ask questions in natural
+                    language, get instant answers from your accounting data.
+                  </span>
+                </CardContent>
+              </article>
+            </Card>
           </div>
 
           <address className="grid grid-cols-[auto_1fr] gap-2 font-mono text-muted-foreground text-sm not-italic">
