@@ -46,7 +46,7 @@ export default function HomePage() {
                   </header>
                 </CardHeader>
 
-                <CardContent className="relative size-80 space-y-2 bg-linear-to-tr from-zinc-950 to-zinc-800 p-6">
+                <CardContent className="relative size-80 space-y-2 bg-linear-to-tr p-6 dark:from-zinc-950 dark:to-zinc-800">
                   <h2 className="flex flex-col gap-2 uppercase">
                     <span className="text-balance font-bold text-3xl">
                       AI-powered business intelligence
