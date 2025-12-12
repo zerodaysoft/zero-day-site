@@ -29,7 +29,7 @@ export default function HomePage() {
             <p className="max-w-prose">We start where others stop.</p>
           </div>
 
-          <div className="relative">
+          <div className="relative my-6">
             <GlowEffect
               colors={["#FF5733", "#33FF57", "#3357FF", "#F1C40F"]}
               mode="colorShift"
