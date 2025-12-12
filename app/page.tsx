@@ -14,7 +14,7 @@ export default function HomePage() {
     <>
       <h1 className="sr-only">Zero-day</h1>
       <div className="relative flex min-h-dvh items-center justify-center">
-        <main className="relative flex min-h-dvh w-full min-w-80 max-w-3xl flex-col items-center justify-between gap-2 px-16 py-5 sm:items-start sm:py-10 md:py-32">
+        <main className="relative flex min-h-dvh w-full min-w-80 max-w-3xl flex-col items-center justify-between gap-2 px-16 pt-5 pb-2 sm:items-start sm:pt-10 md:pt-32">
           <Link href="/" data-slot="logo" className="inline-flex h-8 items-center justify-center">
             <ZeroDayLogo className="h-6 w-auto" />
           </Link>
