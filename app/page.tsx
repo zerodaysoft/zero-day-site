@@ -1,12 +1,12 @@
-import Image from "next/image";
 import Link from "next/link";
 import { MailIcon, MapPinnedIcon } from "lucide-react";
 
-import productCover from "~/assets/product-cover.png";
+import { AiBrainIcon } from "~/components/icons/ai-brain";
 import { ZeroDayLogo } from "~/components/icons/zero-day";
 import { ModeSwitcher } from "~/components/mode-switcher";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { GlowEffect } from "~/components/ui/glow-effect";
+import { Tilt } from "~/components/ui/tilt";
 import { config } from "~/lib/config";
 
 export default function HomePage() {
@@ -14,7 +14,7 @@ export default function HomePage() {
     <>
       <h1 className="sr-only">Zero-day</h1>
       <div className="relative flex min-h-dvh items-center justify-center">
-        <main className="relative flex min-h-dvh w-full max-w-3xl flex-col items-center justify-between gap-2 px-16 py-32 sm:items-start">
+        <main className="relative flex min-h-dvh w-full min-w-80 max-w-3xl flex-col items-center justify-between gap-2 px-16 py-32 sm:items-start">
           <Link href="/" data-slot="logo" className="inline-flex h-8 items-center justify-center">
             <ZeroDayLogo className="h-6 w-auto" />
           </Link>
@@ -23,40 +23,49 @@ export default function HomePage() {
             <p className="max-w-prose">
               We build from <span className="text-foreground">zero</span>.
             </p>
+
             <p className="max-w-prose">
               We <span className="text-lime-500 dark:text-lime-600">fix</span> the unknown.
             </p>
+
             <p className="max-w-prose">We start where others stop.</p>
           </div>
 
-          <div className="relative my-6">
+          <Tilt className="relative my-6" rotationFactor={8} isRevese>
             <GlowEffect
               colors={["#FF5733", "#33FF57", "#3357FF", "#F1C40F"]}
               mode="colorShift"
               blur="medium"
             />
+
             <Card className="relative w-auto min-w-xs gap-0 overflow-clip pb-0" asChild>
               <article>
-                <CardHeader className="border-b [.border-b]:pb-3">
-                  <CardTitle className="font-mono">Our Product</CardTitle>
+                <CardHeader className="border-b [.border-b]:pb-3" asChild>
+                  <header>
+                    <CardTitle className="font-mono">Our Product</CardTitle>
+                  </header>
                 </CardHeader>
-                <CardContent className="relative aspect-square size-full p-0">
-                  <Image
-                    alt="AI-powered business intelligence for 1C ERP users. Ask questions in natural language, get instant answers from your accounting data."
-                    className="aspect-square"
-                    src={productCover}
-                    placeholder="blur"
-                    priority
-                    fill
-                  />
-                  <span className="sr-only">
-                    AI-powered business intelligence for 1C ERP users. Ask questions in natural
-                    language, get instant answers from your accounting data.
-                  </span>
+
+                <CardContent className="relative size-80 space-y-2 bg-linear-to-tr from-zinc-950 to-zinc-800 p-6">
+                  <h2 className="flex flex-col gap-2 uppercase">
+                    <span className="text-balance font-bold text-3xl">
+                      AI-powered business intelligence
+                    </span>
+                    <span className="font-semibold text-xl">for 1C ERP users</span>
+                  </h2>
+
+                  <div className="flex items-center gap-2">
+                    <p className="w-1/2 text-balance">
+                      Ask questions in natural language, get instant answers from your accounting
+                      data
+                    </p>
+
+                    <AiBrainIcon className="size-32" />
+                  </div>
                 </CardContent>
               </article>
             </Card>
-          </div>
+          </Tilt>
 
           <address className="grid grid-cols-[auto_1fr] gap-2 font-mono text-muted-foreground text-sm not-italic">
             <MailIcon aria-hidden="true" focusable="false" className="mt-0.5" />
