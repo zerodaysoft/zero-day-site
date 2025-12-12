@@ -1,7 +1,7 @@
 import "~/styles/globals.css";
-
 import type { Metadata, Viewport } from "next";
 
+import { GoogleAnalytics, VercelAnalytics } from "~/components/analytics";
 import { LayoutPreflightScript } from "~/components/layout-preflight";
 import { ThemeProvider } from "~/components/theme-provider";
 import { config, META_THEME_COLORS } from "~/lib/config";
@@ -42,8 +42,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <LayoutPreflightScript />
       </head>
+      <GoogleAnalytics />
       <body className={cn("group/body overscroll-none antialiased", fontVariables)}>
         <ThemeProvider>{children}</ThemeProvider>
+        <VercelAnalytics />
       </body>
     </html>
   );
