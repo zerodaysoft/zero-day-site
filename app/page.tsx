@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { MailIcon, MapPinnedIcon, PhoneIcon } from "lucide-react";
+import { Call02Icon, Location03Icon, Mail01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 
 import { AiBrainIcon } from "~/components/icons/ai-brain";
 import { ZeroDayLogo } from "~/components/icons/zero-day";
-import { ModeSwitcher } from "~/components/mode-switcher";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { GlowEffect } from "~/components/ui/glow-effect";
 import { Tilt } from "~/components/ui/tilt";
@@ -25,7 +25,7 @@ export default function HomePage() {
             </p>
 
             <p className="max-w-prose">
-              We <span className="text-lime-500 dark:text-lime-600">fix</span> the unknown.
+              We <span className="text-primary">fix</span> the unknown.
             </p>
 
             <p className="max-w-prose">We start where others stop.</p>
@@ -38,47 +38,60 @@ export default function HomePage() {
               blur="medium"
             />
 
-            <Card className="relative w-auto min-w-xs gap-0 overflow-clip pb-0" asChild>
-              <article>
-                <CardHeader className="border-b [.border-b]:pb-3" asChild>
-                  <header>
-                    <CardTitle className="font-mono">Our Product</CardTitle>
-                  </header>
-                </CardHeader>
+            <Card
+              render={<article />}
+              className="relative w-auto min-w-xs gap-0 overflow-clip pt-6 pb-0"
+            >
+              <CardHeader render={<header />} className="border-b px-6">
+                <CardTitle className="font-mono">Our Product</CardTitle>
+              </CardHeader>
 
-                <CardContent className="relative size-80 space-y-2 bg-linear-to-tr p-6 dark:from-zinc-950 dark:to-zinc-800">
-                  <h2 className="flex flex-col gap-2 uppercase">
-                    <span className="text-balance font-bold text-3xl">
-                      AI-powered business intelligence
-                    </span>
-                    <span className="font-semibold text-xl">for 1C ERP users</span>
-                  </h2>
+              <CardContent className="relative size-80 space-y-2 bg-linear-to-tr p-6 text-base dark:from-zinc-950 dark:to-zinc-800">
+                <h2 className="flex flex-col gap-2 uppercase">
+                  <span className="text-balance font-bold text-3xl">
+                    AI-powered business intelligence
+                  </span>
+                  <span className="font-semibold text-xl">for 1C ERP users</span>
+                </h2>
 
-                  <div className="flex items-center gap-2">
-                    <p className="w-1/2 text-balance">
-                      Ask questions in natural language, get instant answers from your accounting
-                      data
-                    </p>
+                <div className="flex items-center gap-2">
+                  <p className="w-1/2 text-balance">
+                    Ask questions in natural language, get instant answers from your accounting data
+                  </p>
 
-                    <AiBrainIcon className="size-32" />
-                  </div>
-                </CardContent>
-              </article>
+                  <AiBrainIcon className="size-32" />
+                </div>
+              </CardContent>
             </Card>
           </Tilt>
 
           <address className="grid grid-cols-[auto_1fr] gap-2 font-mono text-muted-foreground text-sm not-italic">
-            <MailIcon aria-hidden="true" focusable="false" className="mt-0.5" />
+            <HugeiconsIcon
+              icon={Mail01Icon}
+              aria-hidden="true"
+              focusable="false"
+              className="icon mt-0.5"
+            />
             <span>
               <a href={`mailto:${config.contact.email}`}>{config.contact.email}</a>
             </span>
 
-            <PhoneIcon aria-hidden="true" focusable="false" className="mt-0.5" />
+            <HugeiconsIcon
+              icon={Call02Icon}
+              aria-hidden="true"
+              focusable="false"
+              className="icon mt-0.5"
+            />
             <span>
               <a href={`tel:${config.contact.phone}`}>{config.contact.phoneFormatted}</a>
             </span>
 
-            <MapPinnedIcon aria-hidden="true" focusable="false" className="mt-0.5" />
+            <HugeiconsIcon
+              icon={Location03Icon}
+              aria-hidden="true"
+              focusable="false"
+              className="icon mt-0.5"
+            />
             <span>
               {config.address.street},
               <br />
@@ -96,8 +109,6 @@ export default function HomePage() {
             </p>
           </footer>
         </main>
-
-        <ModeSwitcher className="absolute top-5 right-5" />
       </div>
     </>
   );

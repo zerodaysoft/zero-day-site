@@ -11,6 +11,11 @@ declare module "react" {
     [key: `--${string}`]: string | number | undefined;
   }
 
-  type ComponentPropsWithSlot<T extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>> =
-    WithOwnProps<React.ComponentProps<T>, { asChild?: boolean | undefined }>;
+  type ComponentPropsWithRenderer<
+    T extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
+    State = Record<string, unknown>,
+  > = WithOwnProps<
+    React.ComponentProps<T>,
+    { render?: import("@base-ui/react/use-render").useRender.RenderProp<State> }
+  >;
 }
