@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MailIcon, MapPinnedIcon } from "lucide-react";
+import { MailIcon, MapPinnedIcon, PhoneIcon } from "lucide-react";
 
 import { AiBrainIcon } from "~/components/icons/ai-brain";
 import { ZeroDayLogo } from "~/components/icons/zero-day";
@@ -70,11 +70,12 @@ export default function HomePage() {
           <address className="grid grid-cols-[auto_1fr] gap-2 font-mono text-muted-foreground text-sm not-italic">
             <MailIcon aria-hidden="true" focusable="false" className="mt-0.5" />
             <span>
-              <a href={`mailto:${config.contact.email}`}>
-                {config.contact.email.split("@")[0]}
-                <span className="text-lime-500 dark:text-lime-600">@</span>
-                {config.contact.email.split("@")[1]}
-              </a>
+              <a href={`mailto:${config.contact.email}`}>{config.contact.email}</a>
+            </span>
+
+            <PhoneIcon aria-hidden="true" focusable="false" className="mt-0.5" />
+            <span>
+              <a href={`tel:${config.contact.phone}`}>{config.contact.phoneFormatted}</a>
             </span>
 
             <MapPinnedIcon aria-hidden="true" focusable="false" className="mt-0.5" />
@@ -88,9 +89,10 @@ export default function HomePage() {
           <footer className="font-mono">
             <p className="flex flex-col py-4 text-center text-muted-foreground text-sm sm:items-start">
               <span>
-                © {new Date().getFullYear()} {config.company.name} All rights reserved.
+                © {new Date().getFullYear()} {config.company.name}
               </span>
               {config.company.idno ? <span>IDNO {config.company.idno}</span> : null}
+              <span>All rights reserved.</span>
             </p>
           </footer>
         </main>

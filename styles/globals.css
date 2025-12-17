@@ -178,7 +178,7 @@
     @apply pointer-events-none not-[[class*="size-"]]:size-4 shrink-0 select-none;
   }
   a:not([data-slot]) {
-    @apply text-info underline-offset-4 hover:text-info/90 hover:not-aria-disabled:underline not-[[href]]:aria-disabled:cursor-not-allowed aria-disabled:text-info/60;
+    @apply text-primary underline-offset-4 hover:text-primary/90 hover:not-aria-disabled:underline not-[[href]]:aria-disabled:cursor-not-allowed aria-disabled:text-primary/60;
   }
 
   @supports (font: -apple-system-body) and (-webkit-appearance: none) {
