@@ -95,7 +95,7 @@ export default function HomePage() {
             <span>
               {config.address.street},
               <br />
-              {config.address.city}, {config.address.postalCode} {config.address.country}
+              {config.address.postalCode}, {config.address.city}, {config.address.country}
             </span>
           </address>
 
