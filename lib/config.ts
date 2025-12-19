@@ -16,7 +16,7 @@ export const config = {
     idno: 1025600073491,
   },
   address: {
-    street: "str. Alessandro Bernardazzi 29, of. 6",
+    street: "str. Alessandro Bernardazzi 29",
     city: "Chișinău",
     postalCode: "MD-2001",
     country: "Moldova",
