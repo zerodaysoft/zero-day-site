@@ -2,7 +2,7 @@ export function ZeroDayLogo(props: React.SVGProps<SVGSVGElement>) {
   return (
     // biome-ignore lint/a11y/noSvgWithoutTitle: Logo
     <svg
-      width="auto"
+      width="121.75"
       height="24"
       viewBox="0 0 208 41"
       fill="none"
