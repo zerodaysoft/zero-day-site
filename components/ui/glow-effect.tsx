@@ -2,16 +2,28 @@
 
 import { motion, type TargetAndTransition, type Transition } from "motion/react";
 
-import { cn } from "~/lib/utils";
+import { cn, isNumber } from "~/lib/utils";
 
 type AnimationMode = "rotate" | "pulse" | "breathe" | "colorShift" | "flowHorizontal" | "static";
+
+const isCssLength = (value: string): value is `${number}${"px" | "rem" | "em"}` =>
+  /^-?\d+(?:\.\d+)?(?:px|rem|em)$/i.test(value);
 
 export type GlowEffectProps = {
   className?: string;
   style?: React.CSSProperties;
   colors?: string[];
   mode?: AnimationMode;
-  blur?: number | "softest" | "soft" | "medium" | "strong" | "stronger" | "strongest" | "none";
+  blur?:
+    | number
+    | `${number}${"" | "px" | "rem" | "em"}`
+    | "softest"
+    | "soft"
+    | "medium"
+    | "strong"
+    | "stronger"
+    | "strongest"
+    | "none";
   transition?: Transition;
   scale?: number;
   duration?: number;
@@ -22,7 +34,7 @@ export function GlowEffect({
   style,
   colors = ["#FF5733", "#33FF57", "#3357FF", "#F1C40F"],
   mode = "rotate",
-  blur = "medium",
+  blur: blurProp = "medium",
   transition,
   scale = 1,
   duration = 5,
@@ -99,37 +111,31 @@ export function GlowEffect({
     },
   };
 
-  const getBlurClass = (blur: GlowEffectProps["blur"]) => {
-    if (typeof blur === "number") {
-      return `blur-[${blur}px]`;
-    }
-
-    const presets = {
-      softest: "blur-xs",
-      soft: "blur-sm",
-      medium: "blur-md",
-      strong: "blur-lg",
-      stronger: "blur-xl",
-      strongest: "blur-xl",
-      none: "blur-none",
-    };
-
-    return presets[blur as keyof typeof presets];
-  };
-
   return (
     <motion.div
       style={{
         ...style,
+        "--blur": isNumber(blurProp)
+          ? `${blurProp}px`
+          : isCssLength(blurProp)
+            ? blurProp
+            : undefined,
         "--scale": scale,
         willChange: "transform",
         backfaceVisibility: "hidden",
       }}
       animate={animations[mode]}
       className={cn(
-        "pointer-events-none absolute inset-0 h-full w-full",
-        "scale-(--scale) transform-gpu",
-        getBlurClass(blur),
+        "pointer-events-none absolute inset-0 size-full scale-(--scale) transform-gpu",
+        {
+          "blur-(--blur)": isNumber(blurProp) || isCssLength(blurProp),
+          "blur-xs": blurProp === "softest",
+          "blur-sm": blurProp === "soft",
+          "blur-md": blurProp === "medium",
+          "blur-lg": blurProp === "strong",
+          "blur-xl": blurProp === "stronger" || blurProp === "strongest",
+          "blur-none": blurProp === "none",
+        },
         className,
       )}
     />

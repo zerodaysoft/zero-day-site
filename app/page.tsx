@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { Call02Icon, Location03Icon, Mail01Icon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { MailIcon, MapPinnedIcon, PhoneIcon } from "lucide-react";
 
 import { AiBrainIcon } from "~/components/icons/ai-brain";
 import { ZeroDayLogo } from "~/components/icons/zero-day";
+import { AccessibleIcon } from "~/components/ui/accessible-icon";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { GlowEffect } from "~/components/ui/glow-effect";
 import { Tilt } from "~/components/ui/tilt";
@@ -16,7 +16,7 @@ export default function HomePage() {
       <div className="relative flex min-h-dvh items-center justify-center">
         <main className="relative flex min-h-dvh w-full min-w-80 max-w-3xl flex-col items-center justify-between gap-2 px-16 pt-5 pb-2 sm:items-start sm:pt-10 md:pt-32">
           <Link href="/" data-slot="logo" className="inline-flex h-8 items-center justify-center">
-            <ZeroDayLogo className="h-10 w-auto" />
+            <AccessibleIcon label="Zero-day" render={<ZeroDayLogo />} className="h-10 w-auto" />
           </Link>
 
           <div className="flex flex-col items-center text-center font-mono text-lg text-muted-foreground sm:items-start sm:text-left">
@@ -32,11 +32,7 @@ export default function HomePage() {
           </div>
 
           <Tilt className="relative my-6" rotationFactor={8} isRevese>
-            <GlowEffect
-              colors={["#FF5733", "#33FF57", "#3357FF", "#F1C40F"]}
-              mode="colorShift"
-              blur="medium"
-            />
+            <GlowEffect colors={["#FF5733", "#33FF57", "#3357FF", "#F1C40F"]} mode="colorShift" />
 
             <Card
               render={<article />}
@@ -59,39 +55,24 @@ export default function HomePage() {
                     Ask questions in natural language, get instant answers from your accounting data
                   </p>
 
-                  <AiBrainIcon className="size-32" />
+                  <AccessibleIcon render={<AiBrainIcon />} className="size-32" />
                 </div>
               </CardContent>
             </Card>
           </Tilt>
 
           <address className="grid grid-cols-[auto_1fr] gap-2 font-mono text-muted-foreground text-sm not-italic">
-            <HugeiconsIcon
-              icon={Mail01Icon}
-              aria-hidden="true"
-              focusable="false"
-              className="icon mt-0.5"
-            />
+            <AccessibleIcon render={<MailIcon />} className="mt-0.5" />
             <span>
               <a href={`mailto:${config.contact.email}`}>{config.contact.email}</a>
             </span>
 
-            <HugeiconsIcon
-              icon={Call02Icon}
-              aria-hidden="true"
-              focusable="false"
-              className="icon mt-0.5"
-            />
+            <AccessibleIcon render={<PhoneIcon />} className="mt-0.5" />
             <span>
               <a href={`tel:${config.contact.phone}`}>{config.contact.phoneFormatted}</a>
             </span>
 
-            <HugeiconsIcon
-              icon={Location03Icon}
-              aria-hidden="true"
-              focusable="false"
-              className="icon mt-0.5"
-            />
+            <AccessibleIcon render={<MapPinnedIcon />} className="mt-0.5" />
             <span>
               {config.address.street},
               <br />

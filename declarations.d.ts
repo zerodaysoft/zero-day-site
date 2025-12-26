@@ -115,3 +115,8 @@ declare type RecordWithNonNullableValues<R extends RecordLike> = {
 };
 declare type EnumLike = Readonly<Record<string, string | number>>;
 declare type EnumValues<out T extends EnumLike> = T[keyof T];
+declare type StateWithSlot<out T extends string, out S = Record<string, unknown>> = WithOwnProps<
+  S,
+  { slot: T | (string & {}) }
+>;
+declare type PartialPick<out T, out K extends keyof T> = { [P in K]?: T[P] | undefined };
